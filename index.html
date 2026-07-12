@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講透中醫工作坊 一階課－平脈法 報名表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EE;
+    --paper-dim:#F1EBDC;
+    --ink:#2B2820;
+    --ink-soft:#5B5647;
+    --pine:#4B6350;
+    --pine-deep:#374A3B;
+    --sage:#C7CBB4;
+    --sage-dim:#E4E6D9;
+    --seal:#AE3A2C;
+    --seal-dim:#F3E2DE;
+    --gold:#B08D57;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans TC',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 80px;}
+
+  /* Hero */
+  .hero{
+    padding:56px 20px 28px;
+    text-align:center;
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(75,99,80,0.07), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(174,58,44,0.06), transparent 40%);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.28em;color:var(--pine);
+    font-weight:700;margin-bottom:18px;
+  }
+  .eyebrow::before,.eyebrow::after{content:"";width:20px;height:1px;background:var(--gold);}
+  h1{
+    font-family:'Noto Serif TC',serif;
+    font-weight:900;
+    font-size:clamp(28px,6vw,42px);
+    margin:0 0 10px;
+    color:var(--pine-deep);
+    letter-spacing:.02em;
+  }
+  h1 .sub{
+    display:block;
+    font-size:.42em;
+    font-weight:500;
+    color:var(--seal);
+    margin-top:8px;
+    letter-spacing:.15em;
+  }
+  .pulse-wrap{margin:26px auto 8px;max-width:420px;}
+  .pulse-wrap svg{width:100%;height:auto;display:block;}
+  .pulse-line{
+    fill:none;stroke:var(--pine);stroke-width:2.4;
+    stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:640;stroke-dashoffset:640;
+    animation:draw 2.6s ease-out forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .hero-meta{
+    display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+    margin-top:10px;
+  }
+  .badge{
+    background:var(--sage-dim);
+    color:var(--pine-deep);
+    border:1px solid var(--sage);
+    padding:7px 16px;border-radius:999px;
+    font-size:13.5px;font-weight:700;
+  }
+
+  /* Section cards */
+  .section{
+    background:#fff;
+    border:1px solid #E9E3D3;
+    border-radius:var(--radius);
+    padding:28px 26px;
+    margin-top:22px;
+    box-shadow:0 1px 3px rgba(43,40,32,0.04);
+  }
+  .section-title{
+    display:flex;align-items:baseline;gap:10px;
+    font-family:'Noto Serif TC',serif;
+    font-weight:700;font-size:20px;color:var(--pine-deep);
+    margin:0 0 16px;
+    border-bottom:1px solid var(--sage-dim);
+    padding-bottom:12px;
+  }
+  .section-title .mark{
+    color:var(--seal);font-size:14px;font-weight:700;letter-spacing:.05em;
+  }
+  .info-row{display:flex;gap:14px;padding:10px 0;font-size:15px;}
+  .info-row:not(:last-child){border-bottom:1px dashed #EBE4D3;}
+  .info-row .label{flex:0 0 84px;color:var(--ink-soft);font-weight:700;font-size:13.5px;padding-top:2px;}
+  .info-row .val{flex:1;color:var(--ink);}
+
+  .price-list{list-style:none;margin:0 0 16px;padding:0;}
+  .price-list li{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 14px;margin-bottom:8px;
+    background:var(--paper-dim);border-radius:10px;font-size:15px;
+  }
+  .price-list li.highlight{
+    background:var(--seal-dim);border:1px solid #E4C3BC;
+  }
+  .price-list .amt{font-family:'Noto Serif TC',serif;font-weight:700;color:var(--pine-deep);}
+  .price-list li.highlight .amt{color:var(--seal);}
+  .quota-note{font-size:13.5px;color:var(--ink-soft);margin:6px 0 20px;}
+  .bank-box{
+    background:var(--pine-deep);color:var(--paper);
+    border-radius:12px;padding:18px 20px;font-size:14.5px;
+  }
+  .bank-box .t{font-weight:700;letter-spacing:.08em;color:var(--sage-dim);margin-bottom:8px;font-size:12.5px;}
+  .bank-box div{margin:3px 0;}
+
+  /* Form */
+  .field{margin-bottom:22px;}
+  .field label.q{
+    display:block;font-weight:700;font-size:15px;margin-bottom:9px;color:var(--ink);
+  }
+  .field label.q .req{color:var(--seal);margin-left:3px;}
+  input[type=text],input[type=email],textarea{
+    width:100%;border:1px solid #DCD5C3;border-radius:10px;
+    padding:11px 13px;font-size:15px;font-family:inherit;color:var(--ink);
+    background:var(--paper-dim);
+    transition:border-color .15s, background .15s;
+  }
+  input[type=text]:focus,input[type=email]:focus,textarea:focus{
+    outline:none;border-color:var(--pine);background:#fff;
+  }
+  textarea{resize:vertical;min-height:76px;}
+  .radio-group{display:flex;flex-direction:column;gap:9px;}
+  .radio-opt{
+    display:flex;align-items:center;gap:10px;
+    border:1px solid #DCD5C3;border-radius:10px;
+    padding:11px 14px;cursor:pointer;font-size:15px;
+    background:var(--paper-dim);
+    transition:border-color .15s, background .15s;
+  }
+  .radio-opt:hover{border-color:var(--pine);}
+  .radio-opt input{accent-color:var(--pine);width:17px;height:17px;flex:none;}
+  .radio-opt.checked{border-color:var(--pine);background:var(--sage-dim);}
+  .other-input{margin-top:8px;display:none;}
+  .other-input.show{display:block;}
+  .hint{font-size:12.5px;color:var(--ink-soft);margin-top:6px;}
+
+  .submit-btn{
+    width:100%;padding:16px;border:none;border-radius:12px;
+    background:var(--seal);color:#fff;font-size:16.5px;font-weight:700;
+    font-family:'Noto Serif TC',serif;letter-spacing:.08em;cursor:pointer;
+    margin-top:8px;transition:transform .12s, background .15s;
+  }
+  .submit-btn:hover{background:#943024;}
+  .submit-btn:active{transform:scale(.98);}
+  .err{color:var(--seal);font-size:13px;margin-top:4px;display:none;}
+
+  /* Success */
+  .success{
+    display:none;text-align:center;padding:60px 24px;
+  }
+  .success .stamp{
+    width:78px;height:78px;border:3px solid var(--seal);border-radius:14px;
+    color:var(--seal);display:flex;align-items:center;justify-content:center;
+    font-family:'Noto Serif TC',serif;font-weight:900;font-size:26px;
+    margin:0 auto 22px;transform:rotate(-6deg);
+  }
+  .success h2{font-family:'Noto Serif TC',serif;color:var(--pine-deep);margin-bottom:10px;}
+  .success p{color:var(--ink-soft);font-size:14.5px;}
+
+  footer{text-align:center;margin-top:40px;color:var(--ink-soft);font-size:12.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">杏樵有限公司</div>
+    <h1>講透中醫工作坊<span class="sub">一階課　平脈法　報名表</span></h1>
+    <div class="pulse-wrap">
+      <svg viewBox="0 0 420 90" xmlns="http://www.w3.org/2000/svg">
+        <path class="pulse-line" d="M0,45 L60,45 L78,45 L92,14 L108,76 L124,45 L150,45 L166,45 L180,30 L194,60 L208,45 L420,45"/>
+      </svg>
+    </div>
+    <div class="hero-meta">
+      <span class="badge">11/13（五）－11/15（日）9:00–17:00</span>
+      <span class="badge">六福萬怡酒店 9F 風光廳</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="mark">壹</span>課程資訊</div>
+    <div class="info-row"><div class="label">上課時間</div><div class="val">11/13（五）、11/14（六）、11/15（日）9:00–17:00</div></div>
+    <div class="info-row"><div class="label">地　　點</div><div class="val">六福萬怡酒店 9F 風光廳</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="mark">貳</span>費用說明</div>
+    <ul class="price-list">
+      <li><span>原價（含三日午餐）</span><span class="amt">50,000 元</span></li>
+      <li><span>工作坊舊生半價</span><span class="amt">25,000 元</span></li>
+      <li class="highlight"><span>電子報專屬優惠</span><span class="amt">48,000 元</span></li>
+    </ul>
+    <div class="quota-note">＊考量教學品質，本梯次僅收 30 位學員。</div>
+    <div class="bank-box">
+      <div class="t">匯款帳號</div>
+      <div>遠東銀行　台中自由分行（8050344）</div>
+      <div>帳號：03400100011166</div>
+      <div>戶名：杏樵有限公司</div>
+    </div>
+  </div>
+
+  <form class="section" id="regForm" novalidate>
+    <div class="section-title"><span class="mark">參</span>報名資料</div>
+
+    <div class="field">
+      <label class="q">姓名<span class="req">*</span></label>
+      <input type="text" name="name" required>
+      <div class="err">請填寫姓名</div>
+    </div>
+
+    <div class="field">
+      <label class="q">性別<span class="req">*</span></label>
+      <div class="radio-group" data-name="gender">
+        <label class="radio-opt"><input type="radio" name="gender" value="生理男" required>生理男</label>
+        <label class="radio-opt"><input type="radio" name="gender" value="生理女">生理女</label>
+      </div>
+      <div class="err">請選擇性別</div>
+    </div>
+
+    <div class="field">
+      <label class="q">學經歷<span class="req">*</span></label>
+      <textarea name="edu" required placeholder="請簡述您的學歷背景與相關工作經歷"></textarea>
+      <div class="err">請填寫學經歷</div>
+    </div>
+
+    <div class="field">
+      <label class="q">LINE ID（作為課前通知使用）<span class="req">*</span></label>
+      <input type="text" name="line" required>
+      <div class="err">請填寫 LINE ID</div>
+    </div>
+
+    <div class="field">
+      <label class="q">Email<span class="req">*</span></label>
+      <input type="email" name="email" required>
+      <div class="err">請填寫有效的 Email</div>
+    </div>
+
+    <div class="field">
+      <label class="q">身份別<span class="req">*</span></label>
+      <div class="radio-group" data-name="identity">
+        <label class="radio-opt"><input type="radio" name="identity" value="國內中醫師" required>國內中醫師</label>
+        <label class="radio-opt"><input type="radio" name="identity" value="海外中醫師、針灸師">海外中醫師、針灸師</label>
+        <label class="radio-opt"><input type="radio" name="identity" value="其他">其他醫療工作者</label>
+      </div>
+      <div class="other-input" id="otherIdentityWrap">
+        <input type="text" name="identityOther" placeholder="請填寫您的醫療專業別（將由主辦方審核）">
+      </div>
+      <div class="hint">選填「其他醫療工作者」者，將由主辦方審核資格。</div>
+      <div class="err">請選擇身份別</div>
+    </div>
+
+    <div class="field">
+      <label class="q">匯款末五碼<span class="req">*</span></label>
+      <input type="text" name="last5" required maxlength="5" pattern="\d{5}" placeholder="請輸入匯款帳號末五碼數字">
+      <div class="err">請填寫正確的匯款末五碼（5位數字）</div>
+    </div>
+
+    <div class="field">
+      <label class="q">最想突破的是什麼？<span class="req">*</span></label>
+      <textarea name="goal" required placeholder="請分享您目前臨床上最想突破的瓶頸或學習目標"></textarea>
+      <div class="err">請填寫此欄位</div>
+    </div>
+
+    <button type="submit" class="submit-btn">送　出　報　名</button>
+  </form>
+
+  <div class="success" id="success">
+    <div class="stamp">已收訖</div>
+    <h2>報名資料已送出</h2>
+    <p>感謝您的報名，我們將於確認匯款資訊後<br>透過 LINE 與您聯繫課前通知。</p>
+  </div>
+
+  <footer>講透中醫工作坊 一階課－平脈法　｜　杏樵有限公司</footer>
+</div>
+
+<script>
+  // radio checked styling
+  document.querySelectorAll('.radio-opt input').forEach(r=>{
+    r.addEventListener('change',()=>{
+      document.querySelectorAll(`input[name="${r.name}"]`).forEach(sib=>{
+        sib.closest('.radio-opt').classList.toggle('checked', sib.checked);
+      });
+      if(r.name==='identity'){
+        const wrap=document.getElementById('otherIdentityWrap');
+        wrap.classList.toggle('show', r.value==='其他' && r.checked);
+      }
+    });
+  });
+
+  // 請將下方網址換成你部署 Apps Script 後取得的「網頁應用程式網址」
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyCuXal-hIEEPkrVj_EOqNpk88RdnSabtZ9UFnUalgIFapLKyKqjwa41LsFfHtYM9WI/exec';
+
+  const form=document.getElementById('regForm');
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    let valid=true;
+    form.querySelectorAll('.field').forEach(f=>f.querySelector('.err').style.display='none');
+
+    // required text/email/textarea
+    form.querySelectorAll('input[required][type=text], input[required][type=email], textarea[required]').forEach(el=>{
+      if(!el.value.trim()){
+        valid=false;
+        el.closest('.field').querySelector('.err').style.display='block';
+      }
+    });
+    // email format
+    const email=form.email;
+    if(email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
+      valid=false; email.closest('.field').querySelector('.err').style.display='block';
+    }
+    // last5 format
+    const last5=form.last5;
+    if(last5.value.trim() && !/^\d{5}$/.test(last5.value.trim())){
+      valid=false; last5.closest('.field').querySelector('.err').style.display='block';
+    }
+    // radio groups
+    ['gender','identity'].forEach(name=>{
+      const checked=form.querySelector(`input[name="${name}"]:checked`);
+      if(!checked){
+        valid=false;
+        form.querySelector(`[data-name="${name}"]`).closest('.field').querySelector('.err').style.display='block';
+      }
+    });
+
+    if(!valid){
+      form.querySelector('.err[style*="block"]')?.closest('.field')?.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
+    const fd=new FormData(form);
+    const payload={
+      name: fd.get('name'),
+      gender: fd.get('gender'),
+      edu: fd.get('edu'),
+      line: fd.get('line'),
+      email: fd.get('email'),
+      identity: fd.get('identity'),
+      identityOther: fd.get('identityOther') || '',
+      last5: fd.get('last5'),
+      goal: fd.get('goal')
+    };
+
+    const submitBtn=form.querySelector('.submit-btn');
+    submitBtn.disabled=true;
+    submitBtn.textContent='送　出　中…';
+
+    fetch(WEBAPP_URL, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload)
+    }).finally(()=>{
+      form.style.display='none';
+      document.getElementById('success').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
