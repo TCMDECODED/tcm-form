@@ -213,7 +213,7 @@
     <ul class="price-list">
       <li><span>原價（含三日午餐）</span><span class="amt">50,000 元</span></li>
       <li><span>工作坊舊生半價</span><span class="amt">25,000 元</span></li>
-      <li class="highlight"><span>電子報專屬優惠</span><span class="amt">48,000 元</span></li>
+      <li class="highlight"><span>電子報年定戶專屬優惠</span><span class="amt">48,000 元</span></li>
     </ul>
     <div class="quota-note">＊考量教學品質，本梯次僅收 30 位學員。</div>
     <div class="bank-box">
@@ -261,6 +261,16 @@
     </div>
 
     <div class="field">
+      <label class="q">報名方案<span class="req">*</span></label>
+      <div class="radio-group" data-name="plan">
+        <label class="radio-opt"><input type="radio" name="plan" value="原價（含三日午餐）50,000元" required>原價（含三日午餐）50,000 元</label>
+        <label class="radio-opt"><input type="radio" name="plan" value="工作坊舊生半價25,000元">工作坊舊生半價 25,000 元</label>
+        <label class="radio-opt"><input type="radio" name="plan" value="電子報年定戶專屬優惠48,000元">電子報年定戶專屬優惠 48,000 元</label>
+      </div>
+      <div class="err">請選擇報名方案</div>
+    </div>
+
+    <div class="field">
       <label class="q">身份別<span class="req">*</span></label>
       <div class="radio-group" data-name="identity">
         <label class="radio-opt"><input type="radio" name="identity" value="國內中醫師" required>國內中醫師</label>
@@ -272,6 +282,14 @@
       </div>
       <div class="hint">選填「其他醫療工作者」者，將由主辦方審核資格。</div>
       <div class="err">請選擇身份別</div>
+    </div>
+
+    <div class="field">
+      <label class="q">優惠身份確認<span class="req">*</span></label>
+      <div class="hint" style="margin:0 0 10px;">適用「工作坊舊生半價」請填寫參加梯次與學員姓名；適用「電子報年定戶專屬優惠」請填寫訂閱電子報之 Email；皆不適用請填寫「無」。</div>
+      <input type="text" name="promoSession" required placeholder="工作坊第幾梯次＋學員姓名（無則填「無」）" style="margin-bottom:10px;">
+      <input type="text" name="promoEmail" required placeholder="電子報訂閱 Email（無則填「無」）">
+      <div class="err">請填寫優惠身份確認欄位（無適用優惠請填「無」）</div>
     </div>
 
     <div class="field">
@@ -313,7 +331,7 @@
   });
 
   // 請將下方網址換成你部署 Apps Script 後取得的「網頁應用程式網址」
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyCuXal-hIEEPkrVj_EOqNpk88RdnSabtZ9UFnUalgIFapLKyKqjwa41LsFfHtYM9WI/exec';
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyiQr2HJSAkbk3WWeSWw_waLXaguY3QPphjGtqv1cyAukQ-EOwOJAGlM1y1LNPg78rG/exec';
 
   const form=document.getElementById('regForm');
   form.addEventListener('submit', e=>{
@@ -339,7 +357,7 @@
       valid=false; last5.closest('.field').querySelector('.err').style.display='block';
     }
     // radio groups
-    ['gender','identity'].forEach(name=>{
+    ['gender','plan','identity'].forEach(name=>{
       const checked=form.querySelector(`input[name="${name}"]:checked`);
       if(!checked){
         valid=false;
@@ -359,8 +377,11 @@
       edu: fd.get('edu'),
       line: fd.get('line'),
       email: fd.get('email'),
+      plan: fd.get('plan'),
       identity: fd.get('identity'),
       identityOther: fd.get('identityOther') || '',
+      promoSession: fd.get('promoSession'),
+      promoEmail: fd.get('promoEmail'),
       last5: fd.get('last5'),
       goal: fd.get('goal')
     };
