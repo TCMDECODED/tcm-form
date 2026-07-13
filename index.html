@@ -197,24 +197,24 @@
       </svg>
     </div>
     <div class="hero-meta">
-      <span class="badge">11/13（五）－11/15（日）9:00–17:00</span>
+      <span class="badge">11/13（五）－11/15（日）8:30–16:30</span>
       <span class="badge">六福萬怡酒店 9F 風光廳</span>
     </div>
   </div>
 
   <div class="section">
     <div class="section-title"><span class="mark">壹</span>課程資訊</div>
-    <div class="info-row"><div class="label">上課時間</div><div class="val">11/13（五）、11/14（六）、11/15（日）9:00–17:00</div></div>
+    <div class="info-row"><div class="label">上課時間</div><div class="val">11/13（五）、11/14（六）、11/15（日）8:30–16:30</div></div>
     <div class="info-row"><div class="label">地　　點</div><div class="val">六福萬怡酒店 9F 風光廳</div></div>
   </div>
 
   <div class="section">
     <div class="section-title"><span class="mark">貳</span>費用說明</div>
-    <div class="quota-note" style="margin-top:-6px;">＊以下方案皆含三日午餐。</div>
+    <div class="quota-note" style="margin-top:-6px;">＊三日中午皆在飯店內享用「精緻午餐」。</div>
     <ul class="price-list">
       <li><span>工作坊原價</span><span class="amt">50,000 元</span></li>
       <li><span>工作坊舊生半價</span><span class="amt">25,000 元</span></li>
-      <li class="highlight"><span>電子報年定戶專屬優惠</span><span class="amt">48,000 元</span></li>
+      <li><span>電子報訂戶專屬優惠</span><span class="amt">48,000 元</span></li>
     </ul>
     <div class="quota-note">＊考量教學品質，本梯次僅收 30 位學員。</div>
     <div class="bank-box">
@@ -266,7 +266,7 @@
       <div class="radio-group" data-name="plan">
         <label class="radio-opt"><input type="radio" name="plan" value="工作坊原價50,000元" required>工作坊原價 50,000 元</label>
         <label class="radio-opt"><input type="radio" name="plan" value="工作坊舊生半價25,000元">工作坊舊生半價 25,000 元</label>
-        <label class="radio-opt"><input type="radio" name="plan" value="電子報年定戶專屬優惠48,000元">電子報年定戶專屬優惠 48,000 元</label>
+        <label class="radio-opt"><input type="radio" name="plan" value="電子報訂戶專屬優惠48,000元">電子報訂戶專屬優惠 48,000 元</label>
       </div>
       <div class="err">請選擇報名方案</div>
     </div>
@@ -287,10 +287,19 @@
 
     <div class="field">
       <label class="q">優惠身份確認<span class="req">*</span></label>
-      <div class="hint" style="margin:0 0 10px;">適用「工作坊舊生半價」請填寫參加梯次與學員姓名；適用「電子報年定戶專屬優惠」請填寫訂閱電子報之 Email；皆不適用請填寫「無」。</div>
+      <div class="hint" style="margin:0 0 10px;">適用「工作坊舊生半價」請填寫參加梯次與學員姓名；適用「電子報訂戶專屬優惠」請填寫訂閱電子報之 Email；皆不適用請填寫「無」。</div>
       <input type="text" name="promoSession" required placeholder="工作坊第幾梯次＋學員姓名（無則填「無」）" style="margin-bottom:10px;">
       <input type="text" name="promoEmail" required placeholder="電子報訂閱 Email（無則填「無」）">
       <div class="err">請填寫優惠身份確認欄位（無適用優惠請填「無」）</div>
+    </div>
+
+    <div class="field">
+      <label class="q">飲食習慣（午餐）<span class="req">*</span></label>
+      <div class="radio-group" data-name="diet">
+        <label class="radio-opt"><input type="radio" name="diet" value="葷" required>葷</label>
+        <label class="radio-opt"><input type="radio" name="diet" value="素">素</label>
+      </div>
+      <div class="err">請選擇葷素</div>
     </div>
 
     <div class="field">
@@ -358,7 +367,7 @@
       valid=false; last5.closest('.field').querySelector('.err').style.display='block';
     }
     // radio groups
-    ['gender','plan','identity'].forEach(name=>{
+    ['gender','plan','identity','diet'].forEach(name=>{
       const checked=form.querySelector(`input[name="${name}"]:checked`);
       if(!checked){
         valid=false;
@@ -383,6 +392,7 @@
       identityOther: fd.get('identityOther') || '',
       promoSession: fd.get('promoSession'),
       promoEmail: fd.get('promoEmail'),
+      diet: fd.get('diet'),
       last5: fd.get('last5'),
       goal: fd.get('goal')
     };
