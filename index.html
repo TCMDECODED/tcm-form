@@ -217,201 +217,20 @@
       <li><span>電子報年訂閱戶專屬優惠</span><span class="amt">48,000 元</span></li>
     </ul>
     <div class="quota-note">＊考量教學品質，本梯次僅收 30 位學員。</div>
-    <div class="bank-box">
-      <div class="t">匯款帳號</div>
-      <div>遠東銀行　台中自由分行（8050344）</div>
-      <div>帳號：03400100011166</div>
-      <div>戶名：杏樵有限公司</div>
-    </div>
   </div>
 
-  <form class="section" id="regForm" novalidate>
-    <div class="section-title"><span class="mark">參</span>報名資料</div>
-
-    <div class="field">
-      <label class="q">姓名<span class="req">*</span></label>
-      <input type="text" name="name" required>
-      <div class="err">請填寫姓名</div>
+  <div class="section" style="text-align:center;padding:56px 26px;">
+    <div class="section-title" style="justify-content:center;border-bottom:none;padding-bottom:0;">
+      <span class="mark">參</span>報名資料
     </div>
-
-    <div class="field">
-      <label class="q">性別<span class="req">*</span></label>
-      <div class="radio-group" data-name="gender">
-        <label class="radio-opt"><input type="radio" name="gender" value="生理男" required>生理男</label>
-        <label class="radio-opt"><input type="radio" name="gender" value="生理女">生理女</label>
-      </div>
-      <div class="err">請選擇性別</div>
-    </div>
-
-    <div class="field">
-      <label class="q">學經歷<span class="req">*</span></label>
-      <textarea name="edu" required placeholder="請簡述您的學歷背景與相關工作經歷"></textarea>
-      <div class="err">請填寫學經歷</div>
-    </div>
-
-    <div class="field">
-      <label class="q">LINE ID（作為課前通知使用）<span class="req">*</span></label>
-      <input type="text" name="line" required>
-      <div class="err">請填寫 LINE ID</div>
-    </div>
-
-    <div class="field">
-      <label class="q">Email<span class="req">*</span></label>
-      <input type="email" name="email" required>
-      <div class="err">請填寫有效的 Email</div>
-    </div>
-
-    <div class="field">
-      <label class="q">報名方案<span class="req">*</span></label>
-      <div class="radio-group" data-name="plan">
-        <label class="radio-opt"><input type="radio" name="plan" value="工作坊原價50,000元" required>工作坊原價 50,000 元</label>
-        <label class="radio-opt"><input type="radio" name="plan" value="工作坊舊生半價25,000元">工作坊舊生半價 25,000 元</label>
-        <label class="radio-opt"><input type="radio" name="plan" value="電子報年訂閱戶專屬優惠48,000元">電子報年訂閱戶專屬優惠 48,000 元</label>
-      </div>
-      <div class="err">請選擇報名方案</div>
-    </div>
-
-    <div class="field">
-      <label class="q">身份別<span class="req">*</span></label>
-      <div class="radio-group" data-name="identity">
-        <label class="radio-opt"><input type="radio" name="identity" value="國內中醫師" required>國內中醫師</label>
-        <label class="radio-opt"><input type="radio" name="identity" value="海外中醫師、針灸師">海外中醫師、針灸師</label>
-        <label class="radio-opt"><input type="radio" name="identity" value="其他">其他醫療工作者</label>
-      </div>
-      <div class="other-input" id="otherIdentityWrap">
-        <input type="text" name="identityOther" placeholder="請填寫您的醫療專業別（將由主辦方審核）">
-      </div>
-      <div class="hint">選填「其他醫療工作者」者，將由主辦方審核資格。</div>
-      <div class="err">請選擇身份別</div>
-    </div>
-
-    <div class="field">
-      <label class="q">優惠身份確認<span class="req">*</span></label>
-      <div class="hint" style="margin:0 0 10px;">適用「工作坊舊生半價」請填寫參加梯次與學員姓名；適用「電子報年訂閱戶專屬優惠」請填寫訂閱電子報之 Email；皆不適用請填寫「無」。</div>
-      <input type="text" name="promoSession" required placeholder="工作坊第幾梯次＋學員姓名（無則填「無」）" style="margin-bottom:10px;">
-      <input type="text" name="promoEmail" required placeholder="電子報訂閱 Email（無則填「無」）">
-      <div class="err">請填寫優惠身份確認欄位（無適用優惠請填「無」）</div>
-    </div>
-
-    <div class="field">
-      <label class="q">飲食習慣（午餐）<span class="req">*</span></label>
-      <div class="radio-group" data-name="diet">
-        <label class="radio-opt"><input type="radio" name="diet" value="葷" required>葷</label>
-        <label class="radio-opt"><input type="radio" name="diet" value="素">素</label>
-      </div>
-      <div class="err">請選擇葷素</div>
-    </div>
-
-    <div class="field">
-      <label class="q">匯款末五碼<span class="req">*</span></label>
-      <input type="text" name="last5" required maxlength="5" pattern="\d{5}" placeholder="請輸入匯款帳號末五碼數字">
-      <div class="err">請填寫正確的匯款末五碼（5位數字）</div>
-    </div>
-
-    <div class="field">
-      <label class="q">最想突破的是什麼？<span class="req">*</span></label>
-      <textarea name="goal" required placeholder="請分享您目前臨床上最想突破的瓶頸或學習目標"></textarea>
-      <div class="err">請填寫此欄位</div>
-    </div>
-
-    <button type="submit" class="submit-btn">送　出　報　名</button>
-  </form>
-
-  <div class="success" id="success">
-    <div class="stamp">已收訖</div>
-    <h2>報名資料已送出</h2>
-    <p>感謝您的報名，我們將於確認匯款資訊後<br>透過 LINE 與您聯繫課前通知。</p>
+    <div class="stamp" style="margin:18px auto 20px;">已截止</div>
+    <h2 style="font-family:'Noto Serif TC',serif;color:var(--pine-deep);margin:0 0 10px;">本梯次報名已額滿截止</h2>
+    <p style="color:var(--ink-soft);font-size:14.5px;margin:0;">感謝各位的熱烈迴響，本次工作坊名額已收滿。<br>如有候補需求或後續梯次消息，將公告官網或歡迎透過 Facebook私訊、email 與我們聯繫。</p>
   </div>
 
   <footer>講透中醫工作坊 一階課－平脈法　｜　杏樵有限公司</footer>
 </div>
 
-<script>
-  // radio checked styling
-  document.querySelectorAll('.radio-opt input').forEach(r=>{
-    r.addEventListener('change',()=>{
-      document.querySelectorAll(`input[name="${r.name}"]`).forEach(sib=>{
-        sib.closest('.radio-opt').classList.toggle('checked', sib.checked);
-      });
-      if(r.name==='identity'){
-        const wrap=document.getElementById('otherIdentityWrap');
-        wrap.classList.toggle('show', r.value==='其他' && r.checked);
-      }
-    });
-  });
 
-  // 請將下方網址換成你部署 Apps Script 後取得的「網頁應用程式網址」
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyiQr2HJSAkbk3WWeSWw_waLXaguY3QPphjGtqv1cyAukQ-EOwOJAGlM1y1LNPg78rG/exec';
-
-  const form=document.getElementById('regForm');
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    let valid=true;
-    form.querySelectorAll('.field').forEach(f=>f.querySelector('.err').style.display='none');
-
-    // required text/email/textarea
-    form.querySelectorAll('input[required][type=text], input[required][type=email], textarea[required]').forEach(el=>{
-      if(!el.value.trim()){
-        valid=false;
-        el.closest('.field').querySelector('.err').style.display='block';
-      }
-    });
-    // email format
-    const email=form.email;
-    if(email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
-      valid=false; email.closest('.field').querySelector('.err').style.display='block';
-    }
-    // last5 format
-    const last5=form.last5;
-    if(last5.value.trim() && !/^\d{5}$/.test(last5.value.trim())){
-      valid=false; last5.closest('.field').querySelector('.err').style.display='block';
-    }
-    // radio groups
-    ['gender','plan','identity','diet'].forEach(name=>{
-      const checked=form.querySelector(`input[name="${name}"]:checked`);
-      if(!checked){
-        valid=false;
-        form.querySelector(`[data-name="${name}"]`).closest('.field').querySelector('.err').style.display='block';
-      }
-    });
-
-    if(!valid){
-      form.querySelector('.err[style*="block"]')?.closest('.field')?.scrollIntoView({behavior:'smooth',block:'center'});
-      return;
-    }
-
-    const fd=new FormData(form);
-    const payload={
-      name: fd.get('name'),
-      gender: fd.get('gender'),
-      edu: fd.get('edu'),
-      line: fd.get('line'),
-      email: fd.get('email'),
-      plan: fd.get('plan'),
-      identity: fd.get('identity'),
-      identityOther: fd.get('identityOther') || '',
-      promoSession: fd.get('promoSession'),
-      promoEmail: fd.get('promoEmail'),
-      diet: fd.get('diet'),
-      last5: fd.get('last5'),
-      goal: fd.get('goal')
-    };
-
-    const submitBtn=form.querySelector('.submit-btn');
-    submitBtn.disabled=true;
-    submitBtn.textContent='送　出　中…';
-
-    fetch(WEBAPP_URL, {
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify(payload)
-    }).finally(()=>{
-      form.style.display='none';
-      document.getElementById('success').style.display='block';
-      window.scrollTo({top:0,behavior:'smooth'});
-    });
-  });
-</script>
 </body>
 </html>
