@@ -177,6 +177,7 @@
   input::placeholder { color: var(--muted); opacity: .7; }
   input:focus-visible { outline: 3px solid color-mix(in srgb, var(--heading) 30%, transparent); border-color: var(--heading); }
   input[aria-invalid="true"] { border-color: var(--error); }
+  .hint { color: var(--muted); font-size: 14px; margin-top: 4px; }
   .err { color: var(--error); font-size: 14px; margin-top: 4px; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   button.primary, button.ghost {
@@ -309,6 +310,12 @@
         <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="例：0912345678" required>
         <div class="err" id="phone-err" role="alert"></div>
       </div>
+      <div class="field">
+        <label for="last5">匯款帳號後五碼</label>
+        <input id="last5" name="last5" type="text" inputmode="numeric" autocomplete="off" maxlength="5" pattern="[0-9]{5}" placeholder="例：12345" required>
+        <div class="hint">請填寫你匯款用的帳號最後五碼，方便我們核對款項</div>
+        <div class="err" id="last5-err" role="alert"></div>
+      </div>
       <div class="hp" aria-hidden="true">
         <label for="website">請勿填寫此欄</label>
         <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
@@ -348,7 +355,7 @@
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>報名時間</th><th>姓名</th><th>電話</th></tr></thead>
+          <thead><tr><th>#</th><th>報名時間</th><th>姓名</th><th>電話</th><th>後五碼</th></tr></thead>
           <tbody id="rows"></tbody>
         </table>
       </div>
@@ -409,6 +416,8 @@ document.querySelectorAll(".copy").forEach(b => {
 const form = document.getElementById("signup");
 const nameEl = document.getElementById("name");
 const phoneEl = document.getElementById("phone");
+const last5El = document.getElementById("last5");
+last5El.addEventListener("input", () => { last5El.value = last5El.value.replace(/\D/g, "").slice(0, 5); });
 const btn = document.getElementById("submit-btn");
 const msg = document.getElementById("form-msg");
 
@@ -426,9 +435,13 @@ function validate() {
   else if (!/^[\d\s\-+()#]+$/.test(phone) || digits.length < 8 || digits.length > 15) {
     setErr(phoneEl, "電話格式不正確，請填寫 8 到 15 位數字"); ok = false;
   } else setErr(phoneEl, "");
+  const last5 = last5El.value.trim();
+  if (!last5) { setErr(last5El, "請填寫匯款帳號後五碼"); ok = false; }
+  else if (!/^\d{5}$/.test(last5)) { setErr(last5El, "請填寫 5 位數字"); ok = false; }
+  else setErr(last5El, "");
   return ok;
 }
-[nameEl, phoneEl].forEach(el => el.addEventListener("blur", () => { if (el.value) validate(); }));
+[nameEl, phoneEl, last5El].forEach(el => el.addEventListener("blur", () => { if (el.value) validate(); }));
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -441,6 +454,7 @@ form.addEventListener("submit", async (e) => {
       action: "submit",
       name: nameEl.value.trim(),
       phone: phoneEl.value.trim(),
+      last5: last5El.value.trim(),
       website: document.getElementById("website").value
     });
     if (!data.ok) throw new Error(data.error || "unknown");
@@ -488,7 +502,7 @@ function renderRows() {
   tbody.replaceChildren();
   currentRows.forEach((r, i) => {
     const tr = document.createElement("tr");
-    [String(i + 1), r.time, r.name, r.phone].forEach((v, j) => {
+    [String(i + 1), r.time, r.name, r.phone, r.last5 || ""].forEach((v, j) => {
       const td = document.createElement("td");
       td.textContent = v;
       if (j === 0) td.className = "idx";
@@ -504,15 +518,17 @@ document.getElementById("admin-form").addEventListener("submit", e => { e.preven
 document.getElementById("reload-btn").addEventListener("click", loadRows);
 
 document.getElementById("export-btn").addEventListener("click", () => {
-  const sheetData = [["序號", "報名時間", "姓名", "電話"]].concat(
-    currentRows.map((r, i) => [i + 1, r.time, r.name, String(r.phone)])
+  const sheetData = [["序號", "報名時間", "姓名", "電話", "匯款後五碼"]].concat(
+    currentRows.map((r, i) => [i + 1, r.time, r.name, String(r.phone), String(r.last5 || "")])
   );
   const ws = XLSX.utils.aoa_to_sheet(sheetData);
   for (let i = 1; i < sheetData.length; i++) {
-    const cell = ws[XLSX.utils.encode_cell({ r: i, c: 3 })];
-    if (cell) { cell.t = "s"; cell.z = "@"; }
+    for (const c of [3, 4]) {
+      const cell = ws[XLSX.utils.encode_cell({ r: i, c })];
+      if (cell) { cell.t = "s"; cell.z = "@"; }
+    }
   }
-  ws["!cols"] = [{ wch: 6 }, { wch: 20 }, { wch: 14 }, { wch: 16 }];
+  ws["!cols"] = [{ wch: 6 }, { wch: 20 }, { wch: 14 }, { wch: 16 }, { wch: 12 }];
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "二階報名");
   const d = new Date();
